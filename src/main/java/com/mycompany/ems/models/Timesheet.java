@@ -1,0 +1,32 @@
+package com.mycompany.ems.models;
+
+import com.mycompany.ems.models.Employee;
+import lombok.Data;
+
+import javax.persistence.*;
+import java.sql.Date;
+
+@Entity
+@Table(name = "timesheet")
+@Data
+public class Timesheet {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "timesheetid")
+    int timesheetId;
+
+    String empName;
+
+    int timeTotalHours;
+
+    Date timeDate;
+
+    String timeTask;
+
+    String timeDescription;
+
+    @ManyToOne
+    @JoinColumn(name = "empid")
+    private Employee employee;
+}
